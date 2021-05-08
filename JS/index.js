@@ -2,40 +2,34 @@ function navigateToPage(Result, Msg)
 {
     console.log("insert navigatetopage");
     if (Result=='Success')
-       {       
+       {           
         document.getElementById("LoginForm").action = 'toDo.html';
+        return true;
        }
     else
        {
-        document.getElementById("LoginForm").action = 'index.html';       
-        // document.write('The user authentication failed because of '+ Msg);  
-        let spanElem= document.getElementById('LoginAlertMsg');
-        spanElem.innerHTML= Msg; 
-        alert('The user authentication failed because of '+ Msg);  
+          
+         document.getElementById("LoginForm").action = 'index.html';  
+         let spanElem= document.getElementById('LoginAlertMsg');
+         spanElem.innerHTML= Msg; 
+         return false;  
+        // alert('The user authentication failed because of '+ Msg);  
        }
 }
-
-function navigate(url)
-{
-    console.log("insert navigate");
-    window.location.href=url;
-}
-
 
 function validateLoginData(callback)
 {
     console.log("insert validateLoginForm");
     let vUserName = document.getElementById('LoginUserName').value;
     let vPwd   = document.getElementById('LoginPassword').value;
-    //  let spanElem= document.getElementById('LoginAlertMsg');
+    // let spanElem= document.getElementById('LoginAlertMsg');
     let res="";
     let sHTML="";
     let msg ="";
     if ((vUserName=="") ||(vPwd=="") )
     {
         console.log("empty if"); 
-        sHTML = "<div style ='  color:red '><p>The following field(s) are empty :</p> <ul>";
-        msg ="Mandatory field(s) are empty";
+        sHTML = "<div style ='  color:DarkRed '><p>Authentication failed due to the following field(s) are empty :</p> <ul>";
         if (vUserName=="")
          {
             sHTML = sHTML+"<li>Email</li>"; 
@@ -45,26 +39,26 @@ function validateLoginData(callback)
             sHTML = sHTML+"<li>Password</li>";  
          } 
          sHTML= sHTML+"</ul></div>";
-         console.log(sHTML);      
-        //   spanElem.innerHTML= sHTML;
+         console.log(sHTML); 
+        //  spanElem.innerHTML= sHTML; 
+        msg=sHTML;
+        //  return false; 
         res='Failed';
-        //  return false;
-        // callback(res); 
     }
     else
     {  
         if ((vUserName=="admin") && (vPwd=="12345")) 
            {
             console.log("valid case"); 
-            res='Success';               
+            res='Success';              
            }
         else
            {
             console.log("UserName and Password is wrong"); 
-            msg='UserName and Password is wrong';
-            res='Failed';                
+            msg = "<div style ='  color:DarkRed '><p>Authentication failed due to invalid user name or password </div >";
+            res='Failed';        
            }
     } 
-    callback(res, msg);    
+    return(callback(res, msg));    
 }
 

@@ -1,9 +1,12 @@
 let taskCompletedCount=0;
 let alerted=false;
+
 function getDataFromAPI()
    {
    taskCompletedCount=0; 
    alerted=false;
+   let spanElem= document.getElementById('UserAlertMsg');
+   spanElem.innerHTML= `<h6></h6>`;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) 
@@ -23,7 +26,7 @@ function getDataFromAPI()
            {     
             if (taskList[i].completed) 
                 {
-                    task += "<tr class='table-primary'><td><input class='form-check-input' type='checkbox' disabled checked/> </td>";
+                    task += "<tr class='table-danger'><td><input class='form-check-input' type='checkbox' disabled checked/> </td>";
                     task += "<td>"+taskList[i].title+"</td></tr>";                 
                 }
             else
