@@ -7,11 +7,11 @@ function navigateToPage(Result, Msg)
        }
     else
        {
-        document.getElementById("LoginForm").action = 'index.html';
-        alert('The user authentication failed because of '+ Msg); 
+        document.getElementById("LoginForm").action = 'index.html';       
         // document.write('The user authentication failed because of '+ Msg);  
-        // let spanElem= document.getElementById('LoginAlertMsg');
-        // spanElem.innerHTML= Msg;  
+        let spanElem= document.getElementById('LoginAlertMsg');
+        spanElem.innerHTML= Msg; 
+        alert('The user authentication failed because of '+ Msg);  
        }
 }
 
@@ -27,7 +27,7 @@ function validateLoginData(callback)
     console.log("insert validateLoginForm");
     let vUserName = document.getElementById('LoginUserName').value;
     let vPwd   = document.getElementById('LoginPassword').value;
-    // let spanElem= document.getElementById('LoginAlertMsg');
+    //  let spanElem= document.getElementById('LoginAlertMsg');
     let res="";
     let sHTML="";
     let msg ="";
@@ -46,9 +46,9 @@ function validateLoginData(callback)
          } 
          sHTML= sHTML+"</ul></div>";
          console.log(sHTML);      
-        //  spanElem.innerHTML= sHTML;
+        //   spanElem.innerHTML= sHTML;
         res='Failed';
-         //return false;
+        //  return false;
         // callback(res); 
     }
     else

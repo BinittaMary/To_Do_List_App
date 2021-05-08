@@ -7,25 +7,27 @@
 .Login-container
 {
     max-height: 1900 px;
-    height: 44em;
-    background-image: url(../Images/summer-nature-wallpaper-3_edited.png);
+    height: 46em;
+    background-image: url(../Images/794cb8f4b28f8028b5e065a6e2ea310c.jpg);
 }
 
+.home-ft-height
+{
+    height: 1.5rem;
+
+}
 
 .navbar-color
 {
-    background: #26C6DA;
+    background: #de5285;
 }
 
 .Login-row
 {
-    background-color: #a7e8f1;
+    background-color: #de5285;
+    height: 25em;
 }
 
-.home-log-height
-{
-    max-height: 2.5rem;
-}
 
 .table-container
 {

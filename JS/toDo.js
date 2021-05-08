@@ -1,6 +1,9 @@
 let taskCompletedCount=0;
-
-function getDataFromAPI() {
+let alerted=false;
+function getDataFromAPI()
+   {
+   taskCompletedCount=0; 
+   alerted=false;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) 
@@ -41,20 +44,58 @@ function getDataFromAPI() {
   getDataFromAPI(); 
 
 
+
+
+
+
+
+
  function clickIdentified(ID)
 {
-  //alert(ID);
   var cbStatus = document.getElementById(ID).checked;
-  if (cbStatus== true)
-  {
-      taskCompletedCount+=1;
-  }
-  else  
-  {
-     taskCompletedCount-=1;  
-  } 
-  if (taskCompletedCount==5)
-     {
-      alert(taskCompletedCount); 
-     }  
+      if (cbStatus== true)
+       {
+        taskCompletedCount+=1;
+       }
+    else  
+      {
+       taskCompletedCount-=1;  
+      } 
+  var promise = new Promise(function(resolve, reject) { 
+    if((taskCompletedCount==5) && (!alerted))
+      {
+      alerted=true;  
+      resolve(`<h6>Congrats. You have completed five task today!!!!</h6>`);  
+      }
+    else if (taskCompletedCount==4)
+      {
+      if (alerted) 
+         {
+         console.log('less than')  
+         alerted=false;  
+         resolve(`<h6></h6>`);
+         } 
+      }       
+  }) 
+
+   promise.then(function(promise_kept_message) { 
+    let spanElem= document.getElementById('UserAlertMsg');
+    spanElem.innerHTML= promise_kept_message;
+         }, function(error) {   
+     console.log(error);   })   
+
+}
+
+function callclick(ID)
+{
+  console.log('inside call click');
+
+clickIdentified(ID).then(function(promise_kept_message) {  
+  console.log(promise_kept_message); 
+  let spanElem= document.getElementById('UserAlertMsg');
+  spanElem.innerHTML= `<h6>Congrats!. You have completed five task today</h6>`;
+  window.scrollTo(0, 0); 
+      }, function(error) {   
+  console.log(error);   }) 
+
 }
