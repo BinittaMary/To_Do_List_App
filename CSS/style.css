@@ -24,10 +24,16 @@
 
 .Login-row
 {
-    background-color: #de5285;
+    background-color: #ffc0cb;
     height: 30em;
+    border :#de5285 3px solid;
 }
 
+.login-label
+{
+    color :#c84186;
+    font-family: cursive;
+}
 
 .table-container
 {
@@ -35,3 +41,4 @@
     /* background-image: url(../Images/summer-nature-wallpaper-3_edited.png); */
     min-height: 660px;
 }
+

@@ -31,7 +31,7 @@ function validateLoginData(callback)
     if ((vUserName=="") ||(vPwd=="") )
     {
         console.log("empty if"); 
-        sHTML = "<div style ='  color:DarkRed '><p>Authentication failed due to the following field(s) are empty :</p> <ul>";
+        sHTML = "<div style ='color:#ed2939; border : 2px solid #ed2939; font-family: cursive;'><p>Authentication failed due to the following field(s) are empty :</p> <ul>";
         if (vUserName=="")
          {
             sHTML = sHTML+"<li>Email</li>"; 
@@ -58,7 +58,7 @@ function validateLoginData(callback)
         else
            {
             console.log("UserName and Password is wrong"); 
-            msg = "<div style ='  color:DarkRed '><p>Authentication failed due to invalid user name or password </div >";
+            msg = "<div style ='color:#ed2939; border : 2px solid #ed2939; padding:10px; font-family: cursive;'><p>Authentication failed due to invalid user name or password </p></div >";
             res='Failed';        
            }
     } 

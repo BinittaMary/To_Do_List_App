@@ -16,6 +16,7 @@ function getDataFromAPI()
         let taskList = JSON.parse(this.responseText);
         let task ="<table class='table'>";
         let checkBoxID;
+        let rowID;
         task+="<thead>";
         task+="<tr>";
         task+="<th scope='col'>Completed</th>";
@@ -28,12 +29,13 @@ function getDataFromAPI()
             if (taskList[i].completed) 
                 {
                     task += "<tr class='table-danger'><td><input class='form-check-input' type='checkbox' disabled checked/> </td>";
-                    task += "<td>"+taskList[i].title+"</td></tr>";                 
+                    task += "<td class='text-secondary'>"+taskList[i].title+"</td></tr>";                 
                 }
             else
                {
                 checkBoxID="checkBoxID"+i;
-                task += "<tr class='table-light'><td><input class='form-check-input' type='checkbox' id='"+checkBoxID+"'  unchecked onchange='clickIdentified(id)'/> </td>";
+                rowID ="rowID"+i
+                task += "<tr class='table-light' id='"+rowID+"'><td><input class='form-check-input' type='checkbox' id='"+checkBoxID+"'  unchecked onchange='clickIdentified("+i+")'/> </td>";
                 task += "<td>"+taskList[i].title+"</td></tr>";                 
                }
            }
@@ -55,21 +57,26 @@ function getDataFromAPI()
 
 
  function clickIdentified(ID)
-{
-  var cbStatus = document.getElementById(ID).checked;
+{ 
+  var checkBoxID ="checkBoxID"+ID;
+  var rowID ="rowID"+ID;
+  var cbStatus = document.getElementById(checkBoxID).checked;
       if (cbStatus== true)
        {
         taskCompletedCount+=1;
+        document.getElementById(rowID).classList.remove('table-light');
+        document.getElementById(rowID).classList.add('table-primary');
        }
     else  
       {
        taskCompletedCount-=1;  
-      } 
+       document.getElementById(rowID).classList.remove('table-primary');
+       document.getElementById(rowID).classList.add('table-light');      } 
   var promise = new Promise(function(resolve, reject) { 
     if((taskCompletedCount==5) && (!alerted))
       {
       alerted=true;  
-      resolve(`<h6>Congrats. You have completed five task today!!!!</h6>`);  
+      resolve(`<h4 style ='color:#d70040; font-family: cursive;'>Congrats. You have completed five tasks today!!!!</h4>`);  
       }
     else if (taskCompletedCount==4)
       {
