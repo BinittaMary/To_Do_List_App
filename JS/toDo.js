@@ -6,7 +6,8 @@ function getDataFromAPI()
    taskCompletedCount=0; 
    alerted=false;
    let spanElem= document.getElementById('UserAlertMsg');
-   spanElem.innerHTML= `<h6></h6>`;
+  //  console.log('welcome '+globalvariable);
+   spanElem.innerHTML= '<h6></h6>';
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) 
@@ -32,7 +33,7 @@ function getDataFromAPI()
             else
                {
                 checkBoxID="checkBoxID"+i;
-                task += "<tr class='table-light'><td><input class='form-check-input' type='checkbox' id='"+checkBoxID+"'  unchecked onchange='callclick(id)'/> </td>";
+                task += "<tr class='table-light'><td><input class='form-check-input' type='checkbox' id='"+checkBoxID+"'  unchecked onchange='clickIdentified(id)'/> </td>";
                 task += "<td>"+taskList[i].title+"</td></tr>";                 
                }
            }
@@ -84,21 +85,23 @@ function getDataFromAPI()
    promise.then(function(promise_kept_message) { 
     let spanElem= document.getElementById('UserAlertMsg');
     spanElem.innerHTML= promise_kept_message;
-         }, function(error) {   
+    window.scrollTo(0, 0); 
+         })
+    .catch(function(error) {   
      console.log(error);   })   
 
 }
 
-function callclick(ID)
-{
-  console.log('inside call click');
+// function callclick(ID)
+// {
+//   console.log('inside call click');
 
-clickIdentified(ID).then(function(promise_kept_message) {  
-  console.log(promise_kept_message); 
-  let spanElem= document.getElementById('UserAlertMsg');
-  spanElem.innerHTML= `<h6>Congrats!. You have completed five task today</h6>`;
-  window.scrollTo(0, 0); 
-      }, function(error) {   
-  console.log(error);   }) 
+// clickIdentified(ID).then(function(promise_kept_message) {  
+//   console.log(promise_kept_message); 
+//   let spanElem= document.getElementById('UserAlertMsg');
+//   spanElem.innerHTML= `<h6>Congrats!. You have completed five task today</h6>`;
+//   window.scrollTo(0, 0); 
+//       }, function(error) {   
+//   console.log(error);   }) 
 
-}
+// }

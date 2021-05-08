@@ -1,3 +1,5 @@
+var globalvariable;
+
 function navigateToPage(Result, Msg)
 {
     console.log("insert navigatetopage");
@@ -50,7 +52,8 @@ function validateLoginData(callback)
         if ((vUserName=="admin") && (vPwd=="12345")) 
            {
             console.log("valid case"); 
-            res='Success';              
+            res='Success';   
+            globalvariable ='admin';           
            }
         else
            {
