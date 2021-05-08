@@ -32,7 +32,7 @@ function getDataFromAPI()
             else
                {
                 checkBoxID="checkBoxID"+i;
-                task += "<tr class='table-light'><td><input class='form-check-input' type='checkbox' id='"+checkBoxID+"'  unchecked onchange='clickIdentified(id)'/> </td>";
+                task += "<tr class='table-light'><td><input class='form-check-input' type='checkbox' id='"+checkBoxID+"'  unchecked onchange='callclick(id)'/> </td>";
                 task += "<td>"+taskList[i].title+"</td></tr>";                 
                }
            }
