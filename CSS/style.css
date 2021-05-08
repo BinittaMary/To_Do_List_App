@@ -1,0 +1,35 @@
+*
+{
+    margin: 0%;
+    padding: 0%;
+}
+
+.Login-container
+{
+    max-height: 1900 px;
+    height: 44em;
+    background-image: url(../Images/summer-nature-wallpaper-3_edited.png);
+}
+
+
+.navbar-color
+{
+    background: #26C6DA;
+}
+
+.Login-row
+{
+    background-color: #a7e8f1;
+}
+
+.home-log-height
+{
+    max-height: 2.5rem;
+}
+
+.table-container
+{
+    background-color: white;
+    /* background-image: url(../Images/summer-nature-wallpaper-3_edited.png); */
+    min-height: 660px;
+}
